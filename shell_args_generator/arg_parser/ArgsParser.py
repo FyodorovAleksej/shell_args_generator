@@ -1,7 +1,7 @@
 import re
 
-from shell_args_generator.arg_parser.arg_entity.Argument import Argument
 from shell_args_generator.arg_parser.AbstractParser import AbstractParser
+from shell_args_generator.arg_parser.arg_entity.Argument import Argument
 
 
 class ArgsParser(AbstractParser):
@@ -32,25 +32,25 @@ class ArgsParser(AbstractParser):
     def find_short_in_line(self, __line: str):
         shorts = re.search(self.__ARG_SHORT_EXPRESSION, __line)
         if shorts is not None and len(shorts.groups()) >= 1:
-            return shorts[0]
+            return shorts.group(0)  # [0]
         return None
 
     def find_long_in_line(self, __line: str):
         longs = re.search(self.__ARG_LONG_EXPRESSION, __line)
         if longs is not None and len(longs.groups()) >= 1:
-            return longs[0]
+            return longs.group(0)  # [0]
         return None
 
     def find_options_in_line(self, __line: str):
         options_list = []
         options = re.search(self.__ARG_OPTION_EXPRESSION, __line)
         if options is not None and len(options.groups()) >= 1:
-            options_line = options[0]
+            options_line = options.group(0)  # [0]
             options_parts = options_line.split(",")
             for part in options_parts:
                 types = re.search(self.__OPTION_TYPE_EXPRESSION, part)
                 if types is not None and len(options.groups()) >= 1:
-                    temp = types[0]
+                    temp = types.group(0)  # [0]
                     raw_type = temp
                     if temp is not None and len(temp) > 0:
                         while temp.startswith("<"):
@@ -78,7 +78,7 @@ class ArgsParser(AbstractParser):
     def find_description_in_line(self, __line: str):
         descriptions = re.search(self.__ARG_DESCRIPTION_EXPRESSION, __line)
         if descriptions is not None and len(descriptions.groups()) >= 1:
-            temp = descriptions[0]
+            temp = descriptions.group(0)  # [0]
             if temp is not None and len(temp) > 0:
                 while temp.startswith(":") or temp.startswith(" ") or temp.startswith("\t"):
                     temp = temp[1:]
