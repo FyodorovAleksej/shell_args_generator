@@ -1,0 +1,1 @@
+%OPTION_NAME% = new Option(%SHORT_FLAG%, %LONG_FLAG%, false, %OPTION_DESCRIPTION%);

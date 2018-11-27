@@ -1,0 +1,10 @@
+%HOME%
+#8 [EXAMPLE] <1.4.0>
+%TITLE%
+(26.10.2018) [Shell Args Generator] : "project of args generator" #Fyodorov Alexey <Fyodorov.aleksej@gmail.com>
+%ARGS%
+-a|--assert [<String> expression] : "adding expression to assert"
+-h|--help : "print help message"
+-uf|--userfile [<String> path] : "path to user file"
+-ui|--userinput [<String> user input format] : "adding expression to assert"
+-mc|--maxCount [<Integer> user max count, <String> user] : "max count of args"
