@@ -14,11 +14,12 @@ from shell_args_generator.arg_generator import ArgGenerator
 @click.option('--builderConfig', '-bc', default="./shell_args_generator/resources/config/builder/builder_config.ini",
               help='path to builder config.')
 @click.option('--input', '-i', default="./shell_args_generator/resources/template.agf", help='path to input .agf file')
+@click.option('--output', '-o', default="./output", help='path to output directory')
 @click.option('--java', '-j', is_flag=True)
 @click.option('--bash', '-sh', is_flag=True)
 @click.option('--man', '-m', is_flag=True)
-def main(parserconfig, builderconfig, input, java, bash, man):
-    parser = ArgGenerator(parserconfig, builderconfig, input)
+def main(parserconfig, builderconfig, input, output, java, bash, man):
+    parser = ArgGenerator(parserconfig, builderconfig, input, output)
     if java:
         parser.java_generate()
         print("java class generated")
